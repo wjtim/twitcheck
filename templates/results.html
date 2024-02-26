@@ -1,0 +1,117 @@
+<!-- results.html -->
+{% if stream_title %}
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ streamer_name }} is Live!</title>
+        <link rel="icon" type="image/x-icon" href="../Images/record.ico">
+        <!--Using inline styling as there are very few pieces to format, will change later to static sheets if scaling up-->
+        <style>
+          body {
+            background-color: #6441a5;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin-left: 0;
+            margin-right: 0;
+            text-align: center;
+          }
+          p {
+            font-family: sans-serif;
+            text-align: center;
+            font-size: 2em;      
+            color: white;
+            text-shadow: 1px 1px 2px black, 0 0 25px #6441a5, 0 0 5px black;
+          }
+          #twitch-embed {
+            max-width: 80%;
+            max-height: 65%;
+            min-width: 80%;
+            min-height: 65%;
+            display:block;
+            position: relative;
+          }
+          button {
+            background-color: #6441a5;
+            color: white;
+            padding: 1em 2em;
+            text-align: center;
+            text-shadow: 1px 1px 2px black, 0 0 25px #6441a5, 0 0 5px black;
+            font-size: 2em;
+        }
+        button:active {
+            background-color: #522993;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        </style>
+    </head>
+    <body>
+      <!-- Add a placeholder for the Twitch embed -->
+      <div id="twitch-embed">
+        <p>{{ streamer_name }} is Live, playing {{ stream_game }}</p>
+        <!-- Load the Twitch embed JavaScript file -->
+          <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+          <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+          <script type="text/javascript">
+            var streamerName = "{{ streamer_name }}"
+            new Twitch.Embed("twitch-embed", {
+              width: '100%',
+              height: '100%',
+              channel: streamerName,
+            });
+          </script>
+        <p>{{ stream_title }}</p>
+        <button onclick="history.back()">Go Back</button>
+      </div>
+    </body>
+  </html>
+{% else %}
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{{ streamer_name }} is not Live</title>
+      <link rel="icon" type="image/x-icon" href="../Images/record.ico">
+      <!--Using inline styling as there are very few pieces to format, will change later to static sheets if scaling up-->
+      <style>
+        body {
+          background-color: #6441a5;
+          display: flex;
+          justify-content: center;
+          height: 100vh;
+          margin-left: 0;
+          margin-right: 0;
+          text-align: center;
+        }
+        p {
+          font-family: sans-serif;
+          text-align: center;
+          font-size: 2em;      
+          color: white;
+          text-shadow: 1px 1px 2px black, 0 0 25px #6441a5, 0 0 5px black;
+        }
+        button {
+            background-color: #6441a5;
+            color: white;
+            padding: 1em 2em;
+            text-align: center;
+            text-shadow: 1px 1px 2px black, 0 0 25px #6441a5, 0 0 5px black;
+            font-size: 2em;
+        }
+        button:active {
+            background-color: #522993;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+      </style>
+  </head>
+  <div>
+    <p>{{ not_live }}</p>
+  <button onclick="history.back()">Go Back</button>
+</div>
+{% endif %}

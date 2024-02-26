@@ -1,0 +1,65 @@
+<!-- check_twitch.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwitCheck</title>
+    <link rel="icon" type="image/x-icon" href="../Images/record.ico"/>
+    <style>
+        body {
+            background-color: #6441a5;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        p {
+            font-family: sans-serif;
+            text-align: center;
+            font-size: 2em;      
+            color: white;
+            text-shadow: 1px 1px 2px black, 0 0 25px #6441a5, 0 0 5px black;
+        }
+        button {
+            background-color: #6441a5;
+            border: 2px solid white;
+            border-radius: 8px;
+            color: white;
+            padding: 1em 2em;
+            text-align: center;
+            text-shadow: 1px 1px 2px black, 0 0 25px #6441a5, 0 0 5px black;
+            font-size: 2em;
+            box-shadow: .09em .25em #888;
+        }
+        button:active {
+            background-color: #522993;
+            box-shadow: 0 .2em #666;
+            transform: translateY(4px);
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        input[type=text] {
+            border-radius: 8px;
+            padding: 1em 2em;
+            width: 100%;
+            margin-bottom: .5em;
+            
+        }
+        input[type=text]:focus {
+            outline: none;
+        }
+        form {
+            margin-top: 20%;
+        }
+      </style>
+</head>
+    <body>
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Are They Live?</button>
+        </form>
+    </body>
+</html>
